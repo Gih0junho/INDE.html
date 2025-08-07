@@ -37,11 +37,19 @@
 
     main {
       width: 90%;
-      max-width: 600px;
+      max-width: 1000px;
       margin: 30px auto;
+      gap: 20px;
+    }
+
+    main.lista {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+    }
+
+    main.grade {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
     section {
@@ -93,6 +101,27 @@
       font-size: 14px;
       border-top: 3px solid #ba55d3;
     }
+
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .buttons-visualization {
+      font-size: 16px;
+      color: #fff;
+      background-color: #ba55d3;
+      border: none;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .buttons-visualization:hover {
+      background-color: #a64bc3;
+    }
   </style>
 </head>
 <body>
@@ -101,7 +130,12 @@
     <p>Aluna do Ensino Técnico</p>
   </header>
 
-  <main>
+  <div class="buttons">
+    <button class="buttons-visualization" onclick="MudarGrade()">Visualização Grande</button>
+    <button class="buttons-visualization" onclick="MudarLista()">Visualização Lista</button>
+  </div>
+
+  <main class="lista" id="principal">
     <section>
       <h2>Minhas Habilidades</h2>
       <ul>
@@ -143,7 +177,21 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Giovana Santos Junho. Todos os direitos reservados.</p>
+    <p>&copy; 2025 Giovana Junho. Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    function MudarGrade() {
+      const main = document.getElementById("principal");
+      principal.classList.toggle("modo-grade");
+      principal.classList.add("grade");
+    }
+
+    function MudarLista() {
+      const main = document.getElementById("principal");
+      principal.classList.remove("grade");
+      principal.classList.add("lista");
+    }
+  </script>
 </body>
 </html>
