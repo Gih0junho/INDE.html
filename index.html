@@ -84,13 +84,18 @@
     a {
       color: #fff176;
       text-decoration: none;
-      transition: color 0.3s ease;
       cursor: pointer;
+      transition: color 0.5s ease, text-decoration 0.5s ease;
     }
 
     a:hover {
       color: #ffffff;
       text-decoration: underline;
+    }
+
+    a:focus {
+      outline: 2px dashed #fff176;
+      outline-offset: 4px;
     }
 
     footer {
@@ -106,7 +111,7 @@
       text-align: center;
       margin-top: 20px;
     }
-
+    
     .buttons-visualization {
       font-size: 16px;
       color: #fff;
@@ -119,61 +124,149 @@
       transition: background-color 0.3s ease;
     }
 
-    .buttons-visualization:hover {
-      background-color: #a64bc3;
+    .toggle-theme {
+      font-size: 16px;
+      color: #fff;
+      background-color: #ba55d3;
+      border: none;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
+
+    img {
+      width: 200px !important;       /* força largura fixa */
+      height: 200px !important;      /* força altura fixa */
+      object-fit: cover !important;  /* para cobrir o espaço sem distorcer */
+      border-radius: 50% !important; /* deixa redonda */
+      display: block;
+      margin: 20px auto 0;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border: 4px solid #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Estilo do formulário */
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input, textarea {
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    button[type="submit"] {
+      margin-top: 15px;
+      background-color: #fff176;
+      color: #4b0082;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #e6d54a;
+    }
+
+    #formStatus {
+      margin-top: 10px;
+      font-style: italic;
+    }
+
   </style>
 </head>
 <body>
   <header>
     <h1>Bem-vindo à minha página!</h1>
     <p>Aluna do Ensino Técnico</p>
-  </header>
 
-  <div class="buttons">
-    <button class="buttons-visualization" onclick="MudarGrade()">Visualização Grande</button>
-    <button class="buttons-visualization" onclick="MudarLista()">Visualização Lista</button>
-  </div>
+    <div class="buttons">
+      <button class="buttons-visualization" onclick="MudarGrade()">Visualização Grande</button>
+      <button class="buttons-visualization" onclick="MudarLista()">Visualização Lista</button>
+      <button class="toggle-theme" onclick="toggleBackground()" aria-label="Alternar tema claro e escuro">Trocar Cor de Fundo</button>
+    </div>
+  </header>
 
   <main id="principal" class="lista">
     <section>
       <h2>Minhas Habilidades</h2>
       <ul>
-        <li><a href="https://www.locaweb.com.br/blog/temas/codigo-aberto/logica-de-programacao-o-que-e/" target="_blank">Lógica de Programação</a></li>
-        <li><a href="https://www.treinaweb.com.br/blog/o-que-e-e-como-comecar-com-html-e-css" target="_blank">HTML5 & CSS3</a></li>
-        <li><a href="https://www.portaldorh.ms.gov.br/artigo-trabalho-em-equipe-veja-qual-a-importancia-para-o-sucesso-organizacional/" target="_blank">Trabalho em Equipe</a></li>
-        <li><a href="https://www.3eunicamp.com/post/o-que-%C3%A9-iot-descubra-mais-sobre-a-internet-das-coisas?gad_source=1&gad_campaignid=20527797266&gbraid=0AAAAADMRGQEoGKCgSvKrZpqQz9HIUxmVY&gclid=Cj0KCQjwndHEBhDVARIsAGh0g3CoWwmKcazd6ijXwGs7IBLCu_xPULizSNYgv0lPXViuJhiWKy56KlcaAtyaEALw_wcB" target="_blank">IoT</a></li>
+        <li><a href="https://www.locaweb.com.br/blog/temas/codigo-aberto/logica-de-programacao-o-que-e/" target="_blank" rel="noopener noreferrer">Lógica de Programação</a></li>
+        <li><a href="https://www.treinaweb.com.br/blog/o-que-e-e-como-comecar-com-html-e-css" target="_blank" rel="noopener noreferrer">HTML5 & CSS3</a></li>
+        <li><a href="https://www.portaldorh.ms.gov.br/artigo-trabalho-em-equipe-veja-qual-a-importancia-para-o-sucesso-organizacional/" target="_blank" rel="noopener noreferrer">Trabalho em Equipe</a></li>
+        <li><a href="https://www.3eunicamp.com/post/o-que-%C3%A9-iot-descubra-mais-sobre-a-internet-das-coisas?gad_source=1&gad_campaignid=20527797266&gbraid=0AAAAADMRGQEoGKCgSvKrZpqQz9HIUxmVY&gclid=Cj0KCQjwndHEBhDVARIsAGh0g3CoWwmKcazd6ijXwGs7IBLCu_xPULizSNYgv0lPXViuJhiWKy56KlcaAtyaEALw_wcB" target="_blank" rel="noopener noreferrer">IoT</a></li>
       </ul>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqLGcXEPuDCd2U4K-v9Qcb9q4wwSBZ0MYBFw&s" alt="habilidades">
     </section>
 
     <section>
       <h2>Cursos</h2>
       <ul>
-        <li><a href="https://www.alura.com.br/formacao-programacao?utm_term=curso%20de%20l%C3%B3gica%20de%20programa%C3%A7%C3%A3o&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Cursos+-+Campanha+Unificada&utm_source=google&utm_medium=cpc&campaign_id=10211097486_147812395669_655638997881&utm_id=10211097486_147812395669_655638997881&hsa_acc=7964138385&hsa_cam=%5BSearch%5D+%5BPerformance%5D+-+Cursos+-+Campanha+Unificada&hsa_grp=147812395669&hsa_ad=655638997881&hsa_src=g&hsa_tgt=kwd-333260569824&hsa_kw=curso%20de%20l%C3%B3gica%20de%20programa%C3%A7%C3%A3o&hsa_mt=e&hsa_net=google&hsa_ver=3&gad_source=1&gad_campaignid=10211097486&gbraid=0AAAAADpqZICVP7yTp0Is4rFn4IjUFol-Y&gclid=Cj0KCQjwndHEBhDVARIsAGh0g3BJecmCqM3hKU7sojqZxNDpSFBCsb4e7m8GxJWni5qvzIJU-X2oE2MaApg2EALw_wcB" target="_blank">Lógica de Programação</a></li>
-        <li><a href="https://cursos.sesisenai.org.br/cursos-tecnicos/tecnico-em-internet-das-coisas-iot/5756" target="_blank">Redes de IoT</a></li>
-        <li><a href="https://www.udemy.com/course/curso-sistemas-operacionais-basico/?utm_source=adwords&utm_medium=udemyads&utm_campaign=MX_FF-CONV_BR_Search-NB_DSA_Beta_la.PT_Google&campaigntype=Search&portfolio=Brazil&language=PT&product=Course&test=&audience=DSA&topic=&priority=Beta&funnel=Conversion&utm_content=&utm_term=_._ag_164619374106_._ad_706585633337_._kw__._de_c_._dm__._pl__._ti_dsa-2328541782635_._li_9100454_._pd__._&matchtype=&gad_source=1&gad_campaignid=21497093485&gbraid=0AAAAADROdO2gu-qhKW3o1fVoFN6kjyWKR&gclid=Cj0KCQjwndHEBhDVARIsAGh0g3DgcicLM4V9PQHX41T0C4MHa1RCSV3d0q2BwNoc3ltfIFmDTg_JpkQaAs8EEALw_wcB&couponCode=PMNVD2025" target="_blank">Sistemas Operacionais</a></li>
-        <li><a href="https://www.alura.com.br/formacao-carreira-tester-qa?utm_term=&utm_campaign=%5BSearch%5D+%5BPerformance%5D+%5BCursos%5D+DSA+-+Forma%C3%A7%C3%B5es&utm_source=google&utm_medium=cpc&campaign_id=21045490451_158851964763_691754664154&utm_id=21045490451_158851964763_691754664154&hsa_acc=7964138385&hsa_cam=%5BSearch%5D+%5BPerformance%5D+%5BCursos%5D+DSA+-+Forma%C3%A7%C3%B5es&hsa_grp=158851964763&hsa_ad=691754664154&hsa_src=g&hsa_tgt=dsa-2276348409543&hsa_kw=&hsa_mt=&hsa_net=google&hsa_ver=3&gad_source=1&gad_campaignid=21045490451&gbraid=0AAAAADpqZIAFWOS2HvY_9Ztv7ktlFfDfn&gclid=Cj0KCQjwndHEBhDVARIsAGh0g3CYP1K_dFAVmVRyiO-NVZf4ClJzj4yRI2up0kzoSFwNPl_0CNkjD50aAv8WEALw_wcB" target="_blank">Levantamento de Requisitos</a></li>
+        <li><a href="https://www.alura.com.br/formacao-programacao?utm_term=curso%20de%20l%C3%B3gica%20de%20programa%C3%A7%C3%A3o&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Cursos+-+Campanha+Unificada&utm_source=google&utm_medium=cpc&campaign_id=10211097486_147812395669_655638997881&utm_id=10211097486_147812395669_655638997881&hsa_acc=7964138385&hsa_cam=%5BSearch%5D+%5BPerformance%5D+-+Cursos+-+Campanha+Unificada&hsa_grp=147812395669&hsa_ad=655638997881&hsa_src=g&hsa_tgt=kwd-333260569824&hsa_kw=curso%20de%20l%C3%B3gica%20de%20programa%C3%A7%C3%A3o&hsa_mt=e&hsa_net=google&hsa_ver=3&gad_source=1&gad_campaignid=10211097486&gbraid=0AAAAADpqZICVP7yTp0Is4rFn4IjUFol-Y&gclid=Cj0KCQjwndHEBhDVARIsAGh0g3BJecmCqM3hKU7sojqZxNDpSFBCsb4e7m8GxJWni5qvzIJU-X2oE2MaApg2EALw_wcB" target="_blank" rel="noopener noreferrer">Lógica de Programação</a></li>
+        <li><a href="https://cursos.sesisenai.org.br/cursos-tecnicos/tecnico-em-internet-das-coisas-iot/5756" target="_blank" rel="noopener noreferrer">Redes de IoT</a></li>
+        <li><a href="https://www.udemy.com/course/curso-sistemas-operacionais-basico/?utm_source=adwords&utm_medium=udemyads&utm_campaign=MX_FF-CONV_BR_Search-NB_DSA_Beta_la.PT_Google&campaigntype=Search&portfolio=Brazil&language=PT&product=Course&test=&audience=DSA&topic=&priority=Beta&funnel=Conversion&utm_content=&utm_term=_._ag_164619374106_._ad_706585633337_._kw__._de_c_._dm__._pl__._ti_dsa-2328541782635_._li_9100454_._pd__._&matchtype=&gad_source=1&gad_campaignid=21497093485&gbraid=0AAAAADROdO2gu-qhKW3o1fVoFN6kjyWKR&gclid=Cj0KCQjwndHEBhDVARIsAGh0g3DgcicLM4V9PQHX41T0C4MHa1RCSV3d0q2BwNoc3ltfIFmDTg_JpkQaAs8EEALw_wcB&couponCode=PMNVD2025" target="_blank" rel="noopener noreferrer">Sistemas Operacionais</a></li>
+        <li><a href="https://www.alura.com.br/formacao-carreira-tester-qa?utm_term=&utm_campaign=%5BSearch%5D+%5BPerformance%5D+%5BCursos%5D+DSA+-+Forma%C3%A7%C3%B5es&utm_source=google&utm_medium=cpc&campaign_id=21045490451_158851964763_691754664154&utm_id=21045490451_158851964763_691754664154&hsa_acc=7964138385&hsa_cam=%5BSearch%5D+%5BPerformance%5D+%5BCursos%5D+DSA+-+Forma%C3%A7%C3%B5es&hsa_grp=158851964763&hsa_ad=691754664154&hsa_src=g&hsa_tgt=dsa-2276348409543&hsa_kw=&hsa_mt=&hsa_net=google&hsa_ver=3&gad_source=1&gad_campaignid=21045490451&gbraid=0AAAAADpqZIAFWOS2HvY_9Ztv7ktlFfDfn&gclid=Cj0KCQjwndHEBhDVARIsAGh0g3CYP1K_dFAVmVRyiO-NVZf4ClJzj4yRI2up0kzoSFwNPl_0CNkjD50aAv8WEALw_wcB" target="_blank" rel="noopener noreferrer">Levantamento de Requisitos</a></li>
       </ul>
+      <img src="https://www.catho.com.br/carreira-sucesso/wp-content/uploads/sites/3/2020/11/curso-de-administracao.jpg" alt="">
     </section>
 
     <section>
       <h2>Meus Hobbies</h2>
       <ul>
-        <li><a href="https://www.canva.com/" target="_blank">Desenhar e criar no Canva</a></li>
-        <li><a href="https://www.capcut.com/" target="_blank">Editar vídeos no CapCut</a></li>
-        <li><a href="https://www.alura.com.br/" target="_blank">Aprender coisas novas de tecnologia</a></li>
-        <li><a href="https://www.spotify.com/" target="_blank">Ouvir música e montar playlists</a></li>
+        <li><a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer">Desenhar e criar no Canva</a></li>
+        <li><a href="https://www.capcut.com/" target="_blank" rel="noopener noreferrer">Editar vídeos no CapCut</a></li>
+        <li><a href="https://www.alura.com.br/" target="_blank" rel="noopener noreferrer">Aprender coisas novas de tecnologia</a></li>
+        <li><a href="https://www.spotify.com/" target="_blank" rel="noopener noreferrer">Ouvir música e montar playlists</a></li>
       </ul>
+      <img src="https://institutomix.com.br/wp-content/uploads/2021/09/Prancheta-1-4-1.png" alt="">
     </section>
- 
 
     <section>
       <h2>Contato</h2>
       <ul>
         <li><strong>Email:</strong> <a href="mailto:giovana.veroes@gmail.com">giovana.veroes@gmail.com</a></li>
-        <li><strong>GitHub:</strong> <a href="https://github.com/GiovanaJunho" target="_blank">github.com/GiovanaJunho</a></li>
-        <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/giovanajunho" target="_blank">linkedin.com/in/giovanajunho</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/GiovanaJunho" target="_blank" rel="noopener noreferrer">github.com/GiovanaJunho</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/giovanajunho" target="_blank" rel="noopener noreferrer">linkedin.com/in/giovanajunho</a></li>
       </ul>
+    </section>
+
+    <!-- Novo formulário de contato -->
+    <section>
+      <h2>Envie uma Mensagem</h2>
+      <form id="contactForm">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Mensagem:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+      <p id="formStatus"></p>
     </section>
   </main>
 
@@ -184,15 +277,66 @@
   <script>
     function MudarGrade() {
       const main = document.getElementById("principal");
-      principal.classList.toggle("modo-grade");
-      principal.classList.add("grade");
+      main.classList.remove("lista");
+      main.classList.add("grade");
     }
 
     function MudarLista() {
       const main = document.getElementById("principal");
-      principql.classList.remove("grade");
+      main.classList.remove("grade");
       main.classList.add("lista");
     }
+
+    let dark = false;
+    function toggleBackground() {
+      const body = document.body;
+      const header = document.querySelector('header');
+      const footer = document.querySelector('footer');
+      const sections = document.querySelectorAll('section');
+      const links = document.querySelectorAll('a');
+
+      if (dark) {
+        body.style.backgroundColor = '#f9f0ff';
+        body.style.color = '#4b0082';
+        header.style.backgroundColor = '#fff176';
+        footer.style.backgroundColor = '#fff176';
+        sections.forEach(sec => {
+          sec.style.backgroundColor = '#ba55d3';
+          sec.style.color = 'white';
+        });
+        links.forEach(link => {
+          link.style.color = '#fff176';
+        });
+      } else {
+        body.style.backgroundColor = '#121212';
+        body.style.color = '#ffffff';
+        header.style.backgroundColor = '#222222';
+        footer.style.backgroundColor = '#222222';
+        sections.forEach(sec => {
+          sec.style.backgroundColor = '#333333';
+          sec.style.color = '#ffffff';
+        });
+        links.forEach(link => {
+          link.style.color = '#ffd700';
+        });
+      }
+
+      dark = !dark;
+    }
+
+    // Script do formulário de contato
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      status.textContent = 'Enviando...';
+
+      setTimeout(() => {
+        status.textContent = 'Mensagem enviada! Obrigada pelo contato 😊';
+        form.reset();
+      }, 1500);
+    });
   </script>
 </body>
 </html>
